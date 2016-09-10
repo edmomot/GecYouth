@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: 'registrations' }
+
+  namespace :admin do
+    get '/' => 'admin#index'
+  end
+
+
   root to: 'application#index'
 
 

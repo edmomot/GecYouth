@@ -10,4 +10,10 @@ class User < ActiveRecord::Base
   validates :birth_date, presence: true, on: :create
 
   belongs_to :address
+
+  has_and_belongs_to_many :roles
+
+  def admin?
+    self.roles.include? Role.find_by_name('admin')
+  end
 end

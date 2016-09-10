@@ -9,10 +9,13 @@
 u = User.new(first_name: 'Ed', last_name: 'Momot', email: 'ed.momot@gmail.com',
             phone: '6146539110', birth_date: '1993-05-12', password: 'Password')
 
-
-
 a = Address.create(address1: '123 Main St', city: 'Columbus', state: 'OH', zip: '43119')
 
+r = Role.create(name: 'admin', description: 'All functionality available')
+
+
 u.address = a
+u.roles << r
 
 u.save
+
