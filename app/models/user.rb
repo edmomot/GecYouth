@@ -8,4 +8,6 @@ class User < ActiveRecord::Base
   validates :last_name, presence: true, on: :create
   validates :phone, presence: true, on: :create
   validates :birth_date, presence: true, on: :create
+
+  belongs_to :address
 end

@@ -5,6 +5,10 @@
 
   <%= render :partial => 'devise/shared/user_editable_fields', :locals=>{:f=>f} %>
 
+  <%= fields_for @address do |a| %>
+    <%= render :partial => 'devise/shared/address', :locals=>{:f=>a} %>
+  <% end %>
+
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
