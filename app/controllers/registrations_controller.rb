@@ -1,8 +1,22 @@
 class RegistrationsController < Devise::RegistrationsController
   before_filter :configure_permitted_parameters, if: :devise_controller?
 
+  def new
+    @address = Address.new
+    super
+  end
+
+  def create
+    p = permit_address_params(params)
+    f = consistent_address_fields(p)
+
+    super { |u|
+      u.address =  Address.find_or_create_by(f)
+    }
+  end
+
   def edit
-    @address = current_user.address
+    @address = current_user.address.present? ? current_user.address : Address.new
     super
   end
 
